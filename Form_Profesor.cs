@@ -50,7 +50,7 @@ namespace GestionAsignaciones
                 else
                 {
 
-                    MessageBox.Show("Las credenciales ingresadas son invalidad, por favor verifique que los datos ingresados sean correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR DE CREDENCIALES", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usuarioProf_text.Clear();
                     contrasenaProf_text.Clear();
 
@@ -68,16 +68,15 @@ namespace GestionAsignaciones
             }
         }
 
-        private void usuarioProf_text_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void atrasProfesor_text_Click(object sender, EventArgs e)
+        private void Form_Profesor_Load(object sender, EventArgs e)
         {
-                        Form_Principal principal = new Form_Principal();
-            principal.Show();
-            this.Hide();
+            
+                Form_Principal principal = new Form_Principal();
+                principal.Show();
+                this.Hide();
+           
         }
     }
 }

@@ -33,7 +33,6 @@
             usuario_text = new TextBox();
             contrasena_text = new TextBox();
             logIn_button = new Button();
-            atrasUsuario_text = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
@@ -70,6 +69,7 @@
             // 
             contrasena_text.Location = new Point(248, 322);
             contrasena_text.Name = "contrasena_text";
+            contrasena_text.PasswordChar = '*';
             contrasena_text.Size = new Size(328, 27);
             contrasena_text.TabIndex = 4;
             // 
@@ -77,24 +77,13 @@
             // 
             logIn_button.BackgroundImageLayout = ImageLayout.None;
             logIn_button.FlatStyle = FlatStyle.System;
-            logIn_button.Location = new Point(442, 409);
+            logIn_button.Location = new Point(355, 402);
             logIn_button.Name = "logIn_button";
-            logIn_button.Size = new Size(91, 28);
+            logIn_button.Size = new Size(112, 41);
             logIn_button.TabIndex = 5;
-            logIn_button.Text = "Ingresar\r\n";
+            logIn_button.Text = "Iniciar\r\n Sesion";
             logIn_button.UseVisualStyleBackColor = true;
             logIn_button.Click += logIn_button_Click;
-            // 
-            // atrasUsuario_text
-            // 
-            atrasUsuario_text.FlatStyle = FlatStyle.System;
-            atrasUsuario_text.Location = new Point(287, 409);
-            atrasUsuario_text.Name = "atrasUsuario_text";
-            atrasUsuario_text.Size = new Size(91, 28);
-            atrasUsuario_text.TabIndex = 6;
-            atrasUsuario_text.Text = "Regresar";
-            atrasUsuario_text.UseVisualStyleBackColor = true;
-            atrasUsuario_text.Click += atrasUsuario_text_Click;
             // 
             // label1
             // 
@@ -115,7 +104,6 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(851, 494);
             Controls.Add(label1);
-            Controls.Add(atrasUsuario_text);
             Controls.Add(logIn_button);
             Controls.Add(contrasena_text);
             Controls.Add(usuario_text);
@@ -125,6 +113,7 @@
             ForeColor = Color.White;
             Name = "Form_usuario";
             Text = "Form_usuario";
+            Load += Form_usuario_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,7 +125,6 @@
         private TextBox usuario_text;
         private TextBox contrasena_text;
         private Button logIn_button;
-        private Button atrasUsuario_text;
         private Label label1;
     }
 }

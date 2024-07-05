@@ -104,7 +104,7 @@
             button4.Name = "button4";
             button4.Size = new Size(207, 47);
             button4.TabIndex = 2;
-            button4.Text = "Asignaciones";
+            button4.Text = "Assignments";
             button4.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -113,7 +113,7 @@
             button5.Name = "button5";
             button5.Size = new Size(572, 45);
             button5.TabIndex = 3;
-            button5.Text = "Agregar Asignacion";
+            button5.Text = "Create assignment";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
@@ -255,8 +255,8 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(117, 118);
-            dateTimePicker1.MinDate = DateTime.Today; // Fecha mínima es la fecha actual
-            dateTimePicker1.MaxDate = new DateTime(2024, 08, 24); // Fecha máxima específica, por ejemplo, 31 de diciembre de 2024
+            dateTimePicker1.MaxDate = new DateTime(2024, 8, 24, 0, 0, 0, 0);
+            dateTimePicker1.MinDate = new DateTime(2024, 7, 4, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(266, 27);
             dateTimePicker1.TabIndex = 15;

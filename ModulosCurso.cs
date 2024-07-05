@@ -62,11 +62,14 @@ namespace GestionAsignaciones
                 lblTipo.AutoSize = true;
                 lblTipo.Location = new System.Drawing.Point(10, 70);
 
+
                 // Agregar las etiquetas al panel de asignación
                 panelAsignacion.Controls.Add(lblTitulo);
                 panelAsignacion.Controls.Add(lblDescripcion);
                 panelAsignacion.Controls.Add(lblFecha);
                 panelAsignacion.Controls.Add(lblTipo);
+
+
 
                 // Agregar el panel de asignación al panel principal
                 panel2.Controls.Add(panelAsignacion);
@@ -75,6 +78,7 @@ namespace GestionAsignaciones
                 yOffset += panelAsignacion.Height + 10;
             }
         }
+
 
         private void button5_Click(object sender, EventArgs e)
         {

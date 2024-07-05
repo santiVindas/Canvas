@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            atrasProfesor_text = new Button();
             logInProfesor_button = new Button();
             contrasenaProf_text = new TextBox();
             usuarioProf_text = new TextBox();
@@ -42,32 +41,21 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(379, 67);
+            label1.Location = new Point(388, 67);
             label1.Name = "label1";
             label1.Size = new Size(85, 25);
             label1.TabIndex = 14;
             label1.Text = "Profesor";
             // 
-            // atrasProfesor_text
-            // 
-            atrasProfesor_text.FlatStyle = FlatStyle.System;
-            atrasProfesor_text.Location = new Point(311, 406);
-            atrasProfesor_text.Name = "atrasProfesor_text";
-            atrasProfesor_text.Size = new Size(91, 28);
-            atrasProfesor_text.TabIndex = 13;
-            atrasProfesor_text.Text = "Regresar";
-            atrasProfesor_text.UseVisualStyleBackColor = true;
-            atrasProfesor_text.Click += atrasProfesor_text_Click;
-            // 
             // logInProfesor_button
             // 
             logInProfesor_button.BackgroundImageLayout = ImageLayout.None;
             logInProfesor_button.FlatStyle = FlatStyle.System;
-            logInProfesor_button.Location = new Point(466, 406);
+            logInProfesor_button.Location = new Point(371, 402);
             logInProfesor_button.Name = "logInProfesor_button";
-            logInProfesor_button.Size = new Size(91, 28);
+            logInProfesor_button.Size = new Size(121, 42);
             logInProfesor_button.TabIndex = 12;
-            logInProfesor_button.Text = "Ingresar\r\n";
+            logInProfesor_button.Text = "Iniciar Sesion";
             logInProfesor_button.UseVisualStyleBackColor = true;
             logInProfesor_button.Click += logInProfesor_button_Click;
             // 
@@ -75,6 +63,7 @@
             // 
             contrasenaProf_text.Location = new Point(272, 319);
             contrasenaProf_text.Name = "contrasenaProf_text";
+            contrasenaProf_text.PasswordChar = '*';
             contrasenaProf_text.Size = new Size(328, 27);
             contrasenaProf_text.TabIndex = 11;
             // 
@@ -84,7 +73,6 @@
             usuarioProf_text.Name = "usuarioProf_text";
             usuarioProf_text.Size = new Size(328, 27);
             usuarioProf_text.TabIndex = 10;
-            usuarioProf_text.TextChanged += usuarioProf_text_TextChanged;
             // 
             // label3
             // 
@@ -113,16 +101,19 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
+            BackgroundImage = Properties.Resources.ulacit_logo;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(873, 500);
             Controls.Add(label1);
-            Controls.Add(atrasProfesor_text);
             Controls.Add(logInProfesor_button);
             Controls.Add(contrasenaProf_text);
             Controls.Add(usuarioProf_text);
             Controls.Add(label3);
             Controls.Add(label2);
+            DoubleBuffered = true;
             Name = "Form_Profesor";
             Text = "Form_Profesor";
+            Load += Form_Profesor_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -130,7 +121,6 @@
         #endregion
 
         private Label label1;
-        private Button atrasProfesor_text;
         private Button logInProfesor_button;
         private TextBox contrasenaProf_text;
         private TextBox usuarioProf_text;
