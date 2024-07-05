@@ -26,6 +26,21 @@ namespace GestionAsignaciones
 
         private void button6_Click(object sender, EventArgs e)
         {
+            // Validar que los campos Título y Descripción no estén vacíos
+            if (string.IsNullOrWhiteSpace(textBoxTitulo.Text) || string.IsNullOrWhiteSpace(textBoxDesc.Text))
+            {
+                MessageBox.Show("Llenar Título y Descripción");
+                return; // Salir del método sin guardar la asignación
+            }
+
+            // Validar si se ha seleccionado un tipo de asignación
+            if (textBoxTipo.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccionar tipo de asignacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Salir del método sin guardar
+            }
+
+
             // Cadena de conexión directa
             string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
 
@@ -121,15 +136,14 @@ namespace GestionAsignaciones
             panel3.Visible = true;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        // Manejador del evento KeyPress para numericUpDown1
+        private void numericUpDown1_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = true;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -161,5 +175,12 @@ namespace GestionAsignaciones
             cm.Show();
             this.Hide();
         }
+
+        private void textBoxTipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+
     }
 }

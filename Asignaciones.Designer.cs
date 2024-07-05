@@ -119,7 +119,7 @@
             // 
             // button6
             // 
-            button6.BackColor = Color.ForestGreen;
+            button6.BackColor = Color.White;
             button6.Location = new Point(224, 224);
             button6.Name = "button6";
             button6.Size = new Size(111, 31);
@@ -221,15 +221,18 @@
             textBoxTipo.Name = "textBoxTipo";
             textBoxTipo.Size = new Size(115, 28);
             textBoxTipo.TabIndex = 22;
-            textBoxTipo.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            textBoxTipo.KeyPress += textBoxTipo_KeyPress;
             // 
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(83, 180);
+            numericUpDown1.Maximum = new decimal(new int[] { 14, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(45, 27);
             numericUpDown1.TabIndex = 20;
-            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.KeyPress += numericUpDown1_KeyPress;
             // 
             // label7
             // 
@@ -252,6 +255,8 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(117, 118);
+            dateTimePicker1.MinDate = DateTime.Today; // Fecha mínima es la fecha actual
+            dateTimePicker1.MaxDate = new DateTime(2024, 08, 24); // Fecha máxima específica, por ejemplo, 31 de diciembre de 2024
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(266, 27);
             dateTimePicker1.TabIndex = 15;

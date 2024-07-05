@@ -51,6 +51,16 @@
             button18 = new Button();
             button19 = new Button();
             panel2 = new Panel();
+            button33 = new Button();
+            button34 = new Button();
+            button31 = new Button();
+            button32 = new Button();
+            button29 = new Button();
+            button30 = new Button();
+            button27 = new Button();
+            button28 = new Button();
+            button5 = new Button();
+            button26 = new Button();
             button24 = new Button();
             button25 = new Button();
             button22 = new Button();
@@ -158,11 +168,10 @@
             button2.TabIndex = 1;
             button2.Text = "Modulos";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // semana1
             // 
-            semana1.Location = new Point(7, 15);
+            semana1.Location = new Point(7, 52);
             semana1.Name = "semana1";
             semana1.Size = new Size(684, 33);
             semana1.TabIndex = 12;
@@ -173,7 +182,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(694, 15);
+            button6.Location = new Point(694, 52);
             button6.Name = "button6";
             button6.Size = new Size(37, 31);
             button6.TabIndex = 13;
@@ -182,7 +191,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(694, 116);
+            button7.Location = new Point(694, 165);
             button7.Name = "button7";
             button7.Size = new Size(37, 31);
             button7.TabIndex = 15;
@@ -191,7 +200,7 @@
             // 
             // button11
             // 
-            button11.Location = new Point(7, 116);
+            button11.Location = new Point(7, 165);
             button11.Name = "button11";
             button11.Size = new Size(684, 33);
             button11.TabIndex = 14;
@@ -202,7 +211,7 @@
             // 
             // button12
             // 
-            button12.Location = new Point(694, 206);
+            button12.Location = new Point(694, 299);
             button12.Name = "button12";
             button12.Size = new Size(37, 31);
             button12.TabIndex = 17;
@@ -211,7 +220,7 @@
             // 
             // button13
             // 
-            button13.Location = new Point(7, 206);
+            button13.Location = new Point(7, 299);
             button13.Name = "button13";
             button13.Size = new Size(684, 33);
             button13.TabIndex = 16;
@@ -222,7 +231,7 @@
             // 
             // button14
             // 
-            button14.Location = new Point(694, 311);
+            button14.Location = new Point(694, 435);
             button14.Name = "button14";
             button14.Size = new Size(37, 31);
             button14.TabIndex = 19;
@@ -231,7 +240,7 @@
             // 
             // button15
             // 
-            button15.Location = new Point(7, 311);
+            button15.Location = new Point(7, 435);
             button15.Name = "button15";
             button15.Size = new Size(684, 33);
             button15.TabIndex = 18;
@@ -242,7 +251,7 @@
             // 
             // button16
             // 
-            button16.Location = new Point(694, 407);
+            button16.Location = new Point(694, 559);
             button16.Name = "button16";
             button16.Size = new Size(37, 31);
             button16.TabIndex = 21;
@@ -251,7 +260,7 @@
             // 
             // button17
             // 
-            button17.Location = new Point(7, 405);
+            button17.Location = new Point(7, 557);
             button17.Name = "button17";
             button17.Size = new Size(684, 33);
             button17.TabIndex = 20;
@@ -262,7 +271,7 @@
             // 
             // button18
             // 
-            button18.Location = new Point(694, 502);
+            button18.Location = new Point(694, 690);
             button18.Name = "button18";
             button18.Size = new Size(37, 31);
             button18.TabIndex = 23;
@@ -271,7 +280,7 @@
             // 
             // button19
             // 
-            button19.Location = new Point(7, 502);
+            button19.Location = new Point(7, 690);
             button19.Name = "button19";
             button19.Size = new Size(684, 33);
             button19.TabIndex = 22;
@@ -282,6 +291,16 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(button33);
+            panel2.Controls.Add(button34);
+            panel2.Controls.Add(button31);
+            panel2.Controls.Add(button32);
+            panel2.Controls.Add(button29);
+            panel2.Controls.Add(button30);
+            panel2.Controls.Add(button27);
+            panel2.Controls.Add(button28);
+            panel2.Controls.Add(button5);
+            panel2.Controls.Add(button26);
             panel2.Controls.Add(button24);
             panel2.Controls.Add(button25);
             panel2.Controls.Add(button22);
@@ -302,12 +321,113 @@
             panel2.Controls.Add(semana1);
             panel2.Location = new Point(392, -3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(753, 896);
+            panel2.Size = new Size(753, 1799);
             panel2.TabIndex = 24;
+            panel2.Paint += panel2_Paint;
+            // 
+            // button33
+            // 
+            button33.Location = new Point(694, 1707);
+            button33.Name = "button33";
+            button33.Size = new Size(37, 31);
+            button33.TabIndex = 39;
+            button33.Text = "+";
+            button33.UseVisualStyleBackColor = true;
+            // 
+            // button34
+            // 
+            button34.Location = new Point(7, 1707);
+            button34.Name = "button34";
+            button34.Size = new Size(684, 33);
+            button34.TabIndex = 38;
+            button34.Text = "Semana14";
+            button34.TextAlign = ContentAlignment.MiddleLeft;
+            button34.UseVisualStyleBackColor = true;
+            button34.Click += button34_Click;
+            // 
+            // button31
+            // 
+            button31.Location = new Point(694, 1585);
+            button31.Name = "button31";
+            button31.Size = new Size(37, 31);
+            button31.TabIndex = 37;
+            button31.Text = "+";
+            button31.UseVisualStyleBackColor = true;
+            // 
+            // button32
+            // 
+            button32.Location = new Point(7, 1585);
+            button32.Name = "button32";
+            button32.Size = new Size(684, 33);
+            button32.TabIndex = 36;
+            button32.Text = "Semana13";
+            button32.TextAlign = ContentAlignment.MiddleLeft;
+            button32.UseVisualStyleBackColor = true;
+            button32.Click += button32_Click;
+            // 
+            // button29
+            // 
+            button29.Location = new Point(694, 1462);
+            button29.Name = "button29";
+            button29.Size = new Size(37, 31);
+            button29.TabIndex = 35;
+            button29.Text = "+";
+            button29.UseVisualStyleBackColor = true;
+            // 
+            // button30
+            // 
+            button30.Location = new Point(7, 1462);
+            button30.Name = "button30";
+            button30.Size = new Size(684, 33);
+            button30.TabIndex = 34;
+            button30.Text = "Semana12";
+            button30.TextAlign = ContentAlignment.MiddleLeft;
+            button30.UseVisualStyleBackColor = true;
+            button30.Click += button30_Click;
+            // 
+            // button27
+            // 
+            button27.Location = new Point(694, 1316);
+            button27.Name = "button27";
+            button27.Size = new Size(37, 31);
+            button27.TabIndex = 33;
+            button27.Text = "+";
+            button27.UseVisualStyleBackColor = true;
+            // 
+            // button28
+            // 
+            button28.Location = new Point(7, 1316);
+            button28.Name = "button28";
+            button28.Size = new Size(684, 33);
+            button28.TabIndex = 32;
+            button28.Text = "Semana11";
+            button28.TextAlign = ContentAlignment.MiddleLeft;
+            button28.UseVisualStyleBackColor = true;
+            button28.Click += button28_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(694, 1194);
+            button5.Name = "button5";
+            button5.Size = new Size(37, 31);
+            button5.TabIndex = 31;
+            button5.Text = "+";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button26
+            // 
+            button26.Location = new Point(7, 1194);
+            button26.Name = "button26";
+            button26.Size = new Size(684, 33);
+            button26.TabIndex = 30;
+            button26.Text = "Semana10";
+            button26.TextAlign = ContentAlignment.MiddleLeft;
+            button26.UseVisualStyleBackColor = true;
+            button26.Click += button26_Click;
             // 
             // button24
             // 
-            button24.Location = new Point(694, 803);
+            button24.Location = new Point(694, 1077);
             button24.Name = "button24";
             button24.Size = new Size(37, 31);
             button24.TabIndex = 29;
@@ -316,7 +436,7 @@
             // 
             // button25
             // 
-            button25.Location = new Point(7, 803);
+            button25.Location = new Point(7, 1077);
             button25.Name = "button25";
             button25.Size = new Size(684, 33);
             button25.TabIndex = 28;
@@ -327,7 +447,7 @@
             // 
             // button22
             // 
-            button22.Location = new Point(694, 695);
+            button22.Location = new Point(694, 954);
             button22.Name = "button22";
             button22.Size = new Size(37, 31);
             button22.TabIndex = 27;
@@ -336,7 +456,7 @@
             // 
             // button23
             // 
-            button23.Location = new Point(7, 695);
+            button23.Location = new Point(7, 954);
             button23.Name = "button23";
             button23.Size = new Size(684, 33);
             button23.TabIndex = 26;
@@ -347,7 +467,7 @@
             // 
             // button20
             // 
-            button20.Location = new Point(694, 597);
+            button20.Location = new Point(694, 826);
             button20.Name = "button20";
             button20.Size = new Size(37, 31);
             button20.TabIndex = 25;
@@ -356,7 +476,7 @@
             // 
             // button21
             // 
-            button21.Location = new Point(7, 597);
+            button21.Location = new Point(7, 826);
             button21.Name = "button21";
             button21.Size = new Size(684, 33);
             button21.TabIndex = 24;
@@ -376,6 +496,7 @@
             Controls.Add(panelMenu);
             Name = "ModulosCurso";
             Text = "ModulosCurso";
+
             panelMenu.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -414,5 +535,15 @@
         private Button button23;
         private Button button20;
         private Button button21;
+        private Button button33;
+        private Button button34;
+        private Button button31;
+        private Button button32;
+        private Button button29;
+        private Button button30;
+        private Button button27;
+        private Button button28;
+        private Button button5;
+        private Button button26;
     }
 }

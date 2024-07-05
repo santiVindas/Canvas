@@ -20,7 +20,6 @@ namespace GestionAsignaciones
             InitializeComponent();
             this.form1 = form1;
             this.listaAsignaciones = listaAsignaciones;
-            this.form1 = form1;
         }
 
         // Método para mostrar las asignaciones de la semana correspondiente
@@ -33,13 +32,14 @@ namespace GestionAsignaciones
             var asignacionesSemana = listaAsignaciones.Where(a => a.Semana == numeroSemana).ToList();
 
             // Mostrar las asignaciones en el panel
+            int yOffset = 10; // Espaciado vertical entre asignaciones
             foreach (var asignacion in asignacionesSemana)
             {
-                // Crear un control para mostrar la asignación
+                // Crear un panel para cada asignación
                 Panel panelAsignacion = new Panel();
                 panelAsignacion.BorderStyle = BorderStyle.FixedSingle;
-                panelAsignacion.Size = new System.Drawing.Size(500, 300);
-                panelAsignacion.Margin = new Padding(9);
+                panelAsignacion.Size = new System.Drawing.Size(500, 100);
+                panelAsignacion.Location = new System.Drawing.Point(10, yOffset);
 
                 // Crear etiquetas para mostrar los detalles de la asignación
                 Label lblTitulo = new Label();
@@ -70,6 +70,9 @@ namespace GestionAsignaciones
 
                 // Agregar el panel de asignación al panel principal
                 panel2.Controls.Add(panelAsignacion);
+
+                // Incrementar el yOffset para la siguiente asignación
+                yOffset += panelAsignacion.Height + 10;
             }
         }
 
@@ -81,25 +84,21 @@ namespace GestionAsignaciones
         private void button11_Click(object sender, EventArgs e)
         {
             MostrarAsignacionesSemana(2);
-
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             MostrarAsignacionesSemana(3);
-
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             MostrarAsignacionesSemana(4);
-
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
             MostrarAsignacionesSemana(5);
-
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -122,6 +121,31 @@ namespace GestionAsignaciones
             MostrarAsignacionesSemana(9);
         }
 
+        private void button26_Click(object sender, EventArgs e)
+        {
+            MostrarAsignacionesSemana(10);
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            MostrarAsignacionesSemana(11);
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            MostrarAsignacionesSemana(12);
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            MostrarAsignacionesSemana(13);
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            MostrarAsignacionesSemana(14);
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             // Ocultar el formulario de módulos
@@ -131,10 +155,6 @@ namespace GestionAsignaciones
             form1.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -143,9 +163,10 @@ namespace GestionAsignaciones
             this.Hide();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
     }
 }
