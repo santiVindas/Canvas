@@ -52,6 +52,8 @@
             textBoxDesc = new TextBox();
             label3 = new Label();
             label2 = new Label();
+            listBox1 = new ListBox();
+            label4 = new Label();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -66,7 +68,7 @@
             panelMenu.Controls.Add(button1);
             panelMenu.Location = new Point(3, 12);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(101, 539);
+            panelMenu.Size = new Size(101, 931);
             panelMenu.TabIndex = 0;
             // 
             // button3
@@ -120,7 +122,7 @@
             // button6
             // 
             button6.BackColor = Color.White;
-            button6.Location = new Point(224, 224);
+            button6.Location = new Point(220, 239);
             button6.Name = "button6";
             button6.Size = new Size(111, 31);
             button6.TabIndex = 4;
@@ -174,7 +176,7 @@
             panel1.Controls.Add(button2);
             panel1.Location = new Point(110, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(268, 539);
+            panel1.Size = new Size(268, 952);
             panel1.TabIndex = 10;
             // 
             // panel2
@@ -183,7 +185,7 @@
             panel2.Controls.Add(button5);
             panel2.Location = new Point(374, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(594, 735);
+            panel2.Size = new Size(594, 409);
             panel2.TabIndex = 11;
             // 
             // panel3
@@ -201,9 +203,8 @@
             panel3.Controls.Add(button6);
             panel3.Location = new Point(10, 131);
             panel3.Name = "panel3";
-            panel3.Size = new Size(581, 355);
+            panel3.Size = new Size(581, 278);
             panel3.TabIndex = 20;
-            panel3.Paint += panel3_Paint;
             // 
             // textBoxTitulo
             // 
@@ -211,7 +212,6 @@
             textBoxTitulo.Name = "textBoxTitulo";
             textBoxTitulo.Size = new Size(315, 27);
             textBoxTitulo.TabIndex = 0;
-            textBoxTitulo.TextChanged += textBoxTitulo_TextChanged_1;
             // 
             // textBoxTipo
             // 
@@ -255,8 +255,8 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(117, 118);
-            dateTimePicker1.MaxDate = new DateTime(2024, 8, 24, 0, 0, 0, 0);
-            dateTimePicker1.MinDate = new DateTime(2024, 7, 4, 0, 0, 0, 0);
+            dateTimePicker1.MaxDate = new DateTime(2024, 8, 23, 0, 0, 0, 0);
+            dateTimePicker1.MinDate = new DateTime(2024, 7, 17, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(266, 27);
             dateTimePicker1.TabIndex = 15;
@@ -285,7 +285,6 @@
             label3.Size = new Size(87, 20);
             label3.TabIndex = 11;
             label3.Text = "Descripcion";
-            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -296,11 +295,32 @@
             label2.TabIndex = 10;
             label2.Text = "Titulo";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(384, 479);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(575, 444);
+            listBox1.TabIndex = 21;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(561, 443);
+            label4.Name = "label4";
+            label4.Size = new Size(240, 26);
+            label4.TabIndex = 25;
+            label4.Text = "TAREA ESTUDIANTES";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Asignaciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(968, 556);
+            ClientSize = new Size(1280, 955);
+            Controls.Add(label4);
+            Controls.Add(listBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
@@ -315,6 +335,7 @@
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -344,5 +365,7 @@
         private NumericUpDown numericUpDown1;
         private ComboBox textBoxTipo;
         private TextBox txtBoxTipo;
+        private ListBox listBox1;
+        private Label label4;
     }
 }

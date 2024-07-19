@@ -53,6 +53,7 @@
             button3.TabIndex = 2;
             button3.Text = "Cursos";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button1
             // 
@@ -71,7 +72,6 @@
             label1.Size = new Size(436, 20);
             label1.TabIndex = 3;
             label1.Text = "BIENVENDOS ESTUDIANTE A LA PAGINA PRINCIPAL DE CANVAS";
-            label1.Click += label1_Click;
             // 
             // Canva_Estudiante
             // 

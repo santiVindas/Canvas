@@ -20,14 +20,20 @@ namespace Cursos
         private bool isModifyMode = false;
         private bool isDeleteMode = false;
         private string codigoCursoSeleccionado = "";
+        private Asignaciones formularioAsignaciones;
+        private List<ClaseAsignaciones> listaAsignaciones;
 
-        public CreacionCursos()
+        public CreacionCursos(Asignaciones formAsignaciones, List<ClaseAsignaciones> asignaciones)
         {
             InitializeComponent();
             panel1.Visible = false;
             panel2.Visible = false;
             CargarCursos();
             dataGridView1.CellClick += DataGridView1_CellClick;
+            this.formularioAsignaciones = formAsignaciones;
+            this.listaAsignaciones = asignaciones;
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -96,49 +102,6 @@ namespace Cursos
             }
         }
 
-
-
-
-        private void panelcursos(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodigo(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNombreCurso(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtGrupo(object sender, EventArgs e)
-        {
-
-        }
-
-        private void limiteEstudiantes(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string codigo = textBox1.Text;
@@ -181,7 +144,7 @@ namespace Cursos
             isModifyMode = false;
 
             /*Abrir Canva_Main y cargar los datos*/
-            Canva_Main canvaMain = new Canva_Main();
+            Canva_Main canvaMain = new Canva_Main(listaAsignaciones, formularioAsignaciones);
             canvaMain.Show();
             canvaMain.CargarDatos();
         }
@@ -476,7 +439,7 @@ namespace Cursos
 
         private void CreacionCursos_Load(object sender, EventArgs e)
         {
-            Canva_Main cm = new Canva_Main();
+            Canva_Main cm = new Canva_Main(listaAsignaciones, formularioAsignaciones);
             cm.Show();
             this.Hide();
         }

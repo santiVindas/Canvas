@@ -17,12 +17,16 @@ namespace GestionAsignaciones
     {
 
         private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private List<ClaseAsignaciones> listaAsignaciones;
+        private Asignaciones formularioAsignaciones;
 
-        public Canva_Main()
+        public Canva_Main(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones)
         {
             InitializeComponent();
             CargarDatos();
             this.Load += new EventHandler(Canva_Main_Load);
+            listaAsignaciones = asignaciones;
+            formularioAsignaciones = formAsignaciones;
 
 
 
@@ -31,7 +35,7 @@ namespace GestionAsignaciones
         private void button3_Click(object sender, EventArgs e)
         {
             {
-                CreacionCursos principal = new CreacionCursos();
+                CreacionCursos principal = new CreacionCursos(formularioAsignaciones, listaAsignaciones);
                 principal.Show();
                 this.Hide();
             }
@@ -85,7 +89,7 @@ namespace GestionAsignaciones
             System.Windows.Forms.Button button = sender as System.Windows.Forms.Button;
             if (button != null && button.Tag != null)
             {
-                Asignaciones asig = new Asignaciones();
+                Asignaciones asig = new Asignaciones(listaAsignaciones);
                 asig.Show();
                 this.Hide();
             }
@@ -105,7 +109,6 @@ namespace GestionAsignaciones
                 }
             }
         }
-
 
     }
 }

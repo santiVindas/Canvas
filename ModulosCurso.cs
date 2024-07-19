@@ -12,14 +12,14 @@ namespace GestionAsignaciones
 {
     public partial class ModulosCurso : Form
     {
-        private Asignaciones form1; // Referencia al formulario Form1
-        private List<ClaseAsignaciones> listaAsignaciones; // Lista de asignaciones recibida de Form1
+        private Asignaciones formularioAsignaciones;
+        private List<ClaseAsignaciones> listaAsignaciones;
 
-        public ModulosCurso(Asignaciones form1, List<ClaseAsignaciones> listaAsignaciones)
+        public ModulosCurso(Asignaciones asignaciones, List<ClaseAsignaciones> lista)
         {
             InitializeComponent();
-            this.form1 = form1;
-            this.listaAsignaciones = listaAsignaciones;
+            formularioAsignaciones = asignaciones;
+            listaAsignaciones = lista;
         }
 
         // Método para mostrar las asignaciones de la semana correspondiente
@@ -156,13 +156,13 @@ namespace GestionAsignaciones
             this.Hide();
 
             // Mostrar el formulario de asignaciones
-            form1.Show();
+            formularioAsignaciones.Show();
         }
 
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Canva_Main cm = new Canva_Main();
+            Canva_Main cm = new Canva_Main(listaAsignaciones, formularioAsignaciones);
             cm.Show();
             this.Hide();
         }
@@ -172,5 +172,11 @@ namespace GestionAsignaciones
 
         }
 
+        private void ModulosCurso_Load(object sender, EventArgs e)
+        {
+            Assigments_Estudiante principal = new Assigments_Estudiante(listaAsignaciones, formularioAsignaciones);
+            principal.Show();
+            this.Hide();
+        }
     }
 }

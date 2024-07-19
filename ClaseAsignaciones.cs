@@ -13,5 +13,7 @@ namespace GestionAsignaciones
             public DateTime Fecha { get; set; }
             public int Semana { get; set; }
             public string Tipo { get; set; }
-        }
+            public string Respuesta { get; set; } // Nueva propiedad para la respuesta del estudiante
+
+    }
 }

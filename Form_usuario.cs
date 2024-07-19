@@ -13,9 +13,13 @@ namespace GestionAsignaciones
 {
     public partial class Form_usuario : Form
     {
-        public Form_usuario()
+        private List<ClaseAsignaciones> listaAsignaciones;
+        private Asignaciones formularioAsignaciones;
+        public Form_usuario(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones)
         {
             InitializeComponent();
+            listaAsignaciones = asignaciones;
+            formularioAsignaciones = formAsignaciones;
         }
 
         SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-SANTIV\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True");
@@ -44,8 +48,8 @@ namespace GestionAsignaciones
 
                     //Metodo para agregar la otra pantalla
 
-                    Canva_Estudiante Canva_Estu = new Canva_Estudiante();
-                    Canva_Estu.Show();
+                    Canva_Estudiante canvaEstudiante = new Canva_Estudiante(listaAsignaciones, formularioAsignaciones);
+                    canvaEstudiante.Show();
                     this.Hide();
 
                 }

@@ -496,7 +496,7 @@
             Controls.Add(panelMenu);
             Name = "ModulosCurso";
             Text = "ModulosCurso";
-
+            Load += ModulosCurso_Load;
             panelMenu.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

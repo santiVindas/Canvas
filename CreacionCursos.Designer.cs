@@ -128,7 +128,6 @@
             label5.Size = new Size(153, 20);
             label5.TabIndex = 9;
             label5.Text = "Limite de estudiantes:";
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -147,7 +146,6 @@
             label3.Size = new Size(131, 20);
             label3.TabIndex = 7;
             label3.Text = "Nombre del curso:";
-            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -157,7 +155,6 @@
             label2.Size = new Size(125, 20);
             label2.TabIndex = 6;
             label2.Text = "Codigo del curso:";
-            label2.Click += label2_Click;
             // 
             // numericUpDown1
             // 
@@ -165,7 +162,6 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(107, 27);
             numericUpDown1.TabIndex = 5;
-            numericUpDown1.ValueChanged += limiteEstudiantes;
             // 
             // button2
             // 
@@ -193,7 +189,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(232, 27);
             textBox3.TabIndex = 2;
-            textBox3.TextChanged += txtGrupo;
             // 
             // textBox2
             // 
@@ -201,7 +196,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(232, 27);
             textBox2.TabIndex = 1;
-            textBox2.TextChanged += txtNombreCurso;
             // 
             // textBox1
             // 
@@ -209,7 +203,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 27);
             textBox1.TabIndex = 0;
-            textBox1.TextChanged += txtCodigo;
             // 
             // panel2
             // 
