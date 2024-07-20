@@ -18,14 +18,14 @@ namespace GestionAsignaciones
         // Lista para almacenar las asignaciones
         private List<ClaseAsignaciones> listaAsignaciones;
         private List<ClaseAsignaciones> asignacionesPendientes = new List<ClaseAsignaciones>();
-        private string connectionString = "Server=DESKTOP-OI24L37;Database=Asignaciones;Trusted_Connection=True;";
+        private string connectionString = "Server=LAPTOP-LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
 
 
         public Asignaciones(List<ClaseAsignaciones> asignaciones)
         {
             InitializeComponent();
             listaAsignaciones = asignaciones;
-            ActualizarListBox(); // Actualizar al inicio
+            CargarAsignacionesDesdeBD();
 
 
         }
@@ -47,7 +47,7 @@ namespace GestionAsignaciones
 
 
             // Cadena de conexión directa
-            string connectionString = "Server=DESKTOP-OI24L37;Database=Asignaciones;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -102,23 +102,48 @@ namespace GestionAsignaciones
 
             // Limpiar los campos después de guardar
             LimpiarCampos();
+
+        }
+
+        private void CargarAsignacionesDesdeBD()
+        {
+            listaAsignaciones = new List<ClaseAsignaciones>();
+            string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Titulo, Descripcion, Fecha, Semana, Tipo, Respuesta FROM Asignaciones";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ClaseAsignaciones asignacion = new ClaseAsignaciones
+                        {
+                            Titulo = reader["Titulo"].ToString(),
+                            Descripcion = reader["Descripcion"].ToString(),
+                            Fecha = Convert.ToDateTime(reader["Fecha"]),
+                            Semana = Convert.ToInt32(reader["Semana"]),
+                            Tipo = reader["Tipo"].ToString(),
+                            Respuesta = reader["Respuesta"]?.ToString()  // Agrega esta línea si tienes una propiedad Respuesta en tu clase
+                        };
+                        listaAsignaciones.Add(asignacion);
+                    }
+                }
+            }
+
             ActualizarListBox();
         }
 
         public void RecibirRespuesta(string tituloAsignacion, string respuesta)
         {
-            // Encuentra la asignación en la lista de pendientes por título
-            var asignacion = asignacionesPendientes.FirstOrDefault(a => a.Titulo == tituloAsignacion);
+            var asignacion = listaAsignaciones.FirstOrDefault(a => a.Titulo == tituloAsignacion);
             if (asignacion != null)
             {
-                // Actualiza la descripción con la respuesta del estudiante
-                asignacion.Descripcion += $"\nRespuesta del estudiante: {respuesta}";
-
-                // Añadir la asignación a la lista de asignaciones visibles
-                listaAsignaciones.Add(asignacion);
-                asignacionesPendientes.Remove(asignacion);
-
-                // Actualizar el ListBox
+                asignacion.Respuesta = respuesta; // Usa la propiedad Respuesta si existe
                 ActualizarListBox();
             }
         }
@@ -128,7 +153,12 @@ namespace GestionAsignaciones
             listBox1.Items.Clear();
             foreach (var asignacion in listaAsignaciones)
             {
-                listBox1.Items.Add(asignacion.Titulo);
+                string itemText = asignacion.Titulo;
+                if (!string.IsNullOrEmpty(asignacion.Respuesta))
+                {
+                    itemText += " (Entregado)";
+                }
+                listBox1.Items.Add(itemText);
             }
         }
 

@@ -12,7 +12,7 @@ namespace GestionAsignaciones
 {
     public partial class Canva_Estudiante : Form
     {
-        private string connectionString = "Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
         private List<ClaseAsignaciones> listaAsignaciones;
         private Asignaciones formularioAsignaciones;
         private List<Button> courseButtons;

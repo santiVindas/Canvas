@@ -16,7 +16,7 @@ namespace Cursos
 {
     public partial class CreacionCursos : Form
     {
-        private string connectionString = "Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
         private bool isModifyMode = false;
         private bool isDeleteMode = false;
         private string codigoCursoSeleccionado = "";
