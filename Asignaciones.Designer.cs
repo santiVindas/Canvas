@@ -136,8 +136,9 @@
             button8.Name = "button8";
             button8.Size = new Size(207, 47);
             button8.TabIndex = 6;
-            button8.Text = "Crear Grupos";
+            button8.Text = "People";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button9
             // 

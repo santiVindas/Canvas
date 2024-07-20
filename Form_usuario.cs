@@ -11,8 +11,6 @@ using System.Windows.Forms;
 
 namespace GestionAsignaciones
 {
-
-    //HOLAAAAAAAAAAA ESTO ES UNA PRUEBA
     public partial class Form_usuario : Form
     {
         private List<ClaseAsignaciones> listaAsignaciones;
