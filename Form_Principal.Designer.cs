@@ -39,9 +39,10 @@
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(459, 213);
+            button2.Location = new Point(574, 266);
+            button2.Margin = new Padding(4, 4, 4, 4);
             button2.Name = "button2";
-            button2.Size = new Size(177, 168);
+            button2.Size = new Size(221, 210);
             button2.TabIndex = 0;
             button2.Text = "Profesor";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -53,9 +54,10 @@
             button1.BackgroundImage = Properties.Resources.estudiantes_img;
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(194, 213);
+            button1.Location = new Point(242, 266);
+            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(177, 168);
+            button1.Size = new Size(221, 210);
             button1.TabIndex = 1;
             button1.Text = "Estudiante";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -66,25 +68,28 @@
             // 
             label1.BackColor = SystemColors.WindowFrame;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(194, 55);
+            label1.Location = new Point(242, 69);
+            label1.Margin = new Padding(4, 4, 4, 4);
             label1.Name = "label1";
-            label1.Size = new Size(428, 43);
+            label1.Size = new Size(534, 51);
             label1.TabIndex = 2;
             label1.Text = "BIENVENIDOS A CANVAS";
             label1.TextAlign = HorizontalAlignment.Center;
             // 
             // Form_Principal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.img_Ulacit;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(button2);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Form_Principal";
             Text = "Form_Principal";
+            Load += Form_Principal_Load;
             ResumeLayout(false);
             PerformLayout();
         }

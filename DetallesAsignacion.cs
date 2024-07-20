@@ -15,8 +15,8 @@ namespace GestionAsignaciones
     {
 
         private Asignaciones formularioAsignaciones;
-        private ClaseAsignaciones asignacion;   
-        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private ClaseAsignaciones asignacion;
+        private string connectionString = "Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True;";
 
 
 
@@ -93,6 +93,11 @@ namespace GestionAsignaciones
             label3.Text = $"Fecha: {asignacion.Fecha.ToShortDateString()}";
             label4.Text = $"Semana: {asignacion.Semana}";
             label5.Text = $"Tipo: {asignacion.Tipo}";
+        }
+
+        private void DetallesAsignacion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

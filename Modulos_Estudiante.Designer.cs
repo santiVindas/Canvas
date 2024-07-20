@@ -60,18 +60,20 @@
             // 
             // button3
             // 
-            button3.Location = new Point(9, 141);
+            button3.Location = new Point(11, 176);
+            button3.Margin = new Padding(4, 4, 4, 4);
             button3.Name = "button3";
-            button3.Size = new Size(71, 28);
+            button3.Size = new Size(89, 35);
             button3.TabIndex = 2;
             button3.Text = "Cursos";
             button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(9, 21);
+            button1.Location = new Point(11, 26);
+            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(80, 77);
+            button1.Size = new Size(100, 96);
             button1.TabIndex = 1;
             button1.Text = "Perfil";
             button1.UseVisualStyleBackColor = true;
@@ -84,61 +86,68 @@
             panel1.Controls.Add(button8);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button2);
-            panel1.Location = new Point(119, 12);
+            panel1.Location = new Point(149, 15);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(268, 588);
+            panel1.Size = new Size(335, 735);
             panel1.TabIndex = 12;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(99, 53);
+            label1.Location = new Point(124, 66);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(63, 25);
             label1.TabIndex = 9;
             label1.Text = "2C024";
             // 
             // button10
             // 
-            button10.Location = new Point(21, 438);
+            button10.Location = new Point(26, 548);
+            button10.Margin = new Padding(4, 4, 4, 4);
             button10.Name = "button10";
-            button10.Size = new Size(207, 47);
+            button10.Size = new Size(259, 59);
             button10.TabIndex = 8;
             button10.Text = "Integrantes";
             button10.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            button9.Location = new Point(21, 361);
+            button9.Location = new Point(26, 451);
+            button9.Margin = new Padding(4, 4, 4, 4);
             button9.Name = "button9";
-            button9.Size = new Size(207, 47);
+            button9.Size = new Size(259, 59);
             button9.TabIndex = 7;
             button9.Text = "Ver Grupos";
             button9.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            button8.Location = new Point(21, 290);
+            button8.Location = new Point(26, 362);
+            button8.Margin = new Padding(4, 4, 4, 4);
             button8.Name = "button8";
-            button8.Size = new Size(207, 47);
+            button8.Size = new Size(259, 59);
             button8.TabIndex = 6;
             button8.Text = "Crear Grupos";
             button8.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            button4.Location = new Point(21, 214);
+            button4.Location = new Point(26, 268);
+            button4.Margin = new Padding(4, 4, 4, 4);
             button4.Name = "button4";
-            button4.Size = new Size(207, 47);
+            button4.Size = new Size(259, 59);
             button4.TabIndex = 2;
             button4.Text = "Assignments";
             button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(21, 139);
+            button2.Location = new Point(26, 174);
+            button2.Margin = new Padding(4, 4, 4, 4);
             button2.Name = "button2";
-            button2.Size = new Size(207, 47);
+            button2.Size = new Size(259, 59);
             button2.TabIndex = 1;
             button2.Text = "Modulos";
             button2.UseVisualStyleBackColor = true;
@@ -149,16 +158,18 @@
             panelMenu.BackColor = Color.FromArgb(87, 35, 100);
             panelMenu.Controls.Add(button3);
             panelMenu.Controls.Add(button1);
-            panelMenu.Location = new Point(12, 12);
+            panelMenu.Location = new Point(15, 15);
+            panelMenu.Margin = new Padding(4, 4, 4, 4);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(101, 588);
+            panelMenu.Size = new Size(126, 735);
             panelMenu.TabIndex = 11;
             // 
             // button5
             // 
-            button5.Location = new Point(5, 11);
+            button5.Location = new Point(6, 14);
+            button5.Margin = new Padding(4, 4, 4, 4);
             button5.Name = "button5";
-            button5.Size = new Size(630, 34);
+            button5.Size = new Size(788, 42);
             button5.TabIndex = 13;
             button5.Text = "Semana1";
             button5.TextAlign = ContentAlignment.MiddleLeft;
@@ -180,16 +191,19 @@
             panel2.Controls.Add(button11);
             panel2.Controls.Add(button6);
             panel2.Controls.Add(button5);
-            panel2.Location = new Point(395, 13);
+            panel2.Location = new Point(494, 16);
+            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(692, 1641);
+            panel2.Size = new Size(865, 2051);
             panel2.TabIndex = 14;
+            panel2.Paint += panel2_Paint;
             // 
             // button22
             // 
-            button22.Location = new Point(5, 1566);
+            button22.Location = new Point(6, 1958);
+            button22.Margin = new Padding(4, 4, 4, 4);
             button22.Name = "button22";
-            button22.Size = new Size(630, 34);
+            button22.Size = new Size(788, 42);
             button22.TabIndex = 28;
             button22.Text = "Semana14";
             button22.TextAlign = ContentAlignment.MiddleLeft;
@@ -197,9 +211,10 @@
             // 
             // button23
             // 
-            button23.Location = new Point(5, 1467);
+            button23.Location = new Point(6, 1834);
+            button23.Margin = new Padding(4, 4, 4, 4);
             button23.Name = "button23";
-            button23.Size = new Size(630, 34);
+            button23.Size = new Size(788, 42);
             button23.TabIndex = 27;
             button23.Text = "Semana13";
             button23.TextAlign = ContentAlignment.MiddleLeft;
@@ -207,9 +222,10 @@
             // 
             // button18
             // 
-            button18.Location = new Point(3, 1353);
+            button18.Location = new Point(4, 1691);
+            button18.Margin = new Padding(4, 4, 4, 4);
             button18.Name = "button18";
-            button18.Size = new Size(630, 34);
+            button18.Size = new Size(788, 42);
             button18.TabIndex = 24;
             button18.Text = "Semana12";
             button18.TextAlign = ContentAlignment.MiddleLeft;
@@ -217,9 +233,10 @@
             // 
             // button19
             // 
-            button19.Location = new Point(0, 1229);
+            button19.Location = new Point(0, 1536);
+            button19.Margin = new Padding(4, 4, 4, 4);
             button19.Name = "button19";
-            button19.Size = new Size(630, 34);
+            button19.Size = new Size(788, 42);
             button19.TabIndex = 23;
             button19.Text = "Semana11";
             button19.TextAlign = ContentAlignment.MiddleLeft;
@@ -228,9 +245,10 @@
             // 
             // button16
             // 
-            button16.Location = new Point(3, 1101);
+            button16.Location = new Point(4, 1376);
+            button16.Margin = new Padding(4, 4, 4, 4);
             button16.Name = "button16";
-            button16.Size = new Size(630, 34);
+            button16.Size = new Size(788, 42);
             button16.TabIndex = 22;
             button16.Text = "Semana10";
             button16.TextAlign = ContentAlignment.MiddleLeft;
@@ -238,9 +256,10 @@
             // 
             // button17
             // 
-            button17.Location = new Point(3, 971);
+            button17.Location = new Point(4, 1214);
+            button17.Margin = new Padding(4, 4, 4, 4);
             button17.Name = "button17";
-            button17.Size = new Size(630, 34);
+            button17.Size = new Size(788, 42);
             button17.TabIndex = 21;
             button17.Text = "Semana9";
             button17.TextAlign = ContentAlignment.MiddleLeft;
@@ -248,9 +267,10 @@
             // 
             // button14
             // 
-            button14.Location = new Point(5, 847);
+            button14.Location = new Point(6, 1059);
+            button14.Margin = new Padding(4, 4, 4, 4);
             button14.Name = "button14";
-            button14.Size = new Size(630, 34);
+            button14.Size = new Size(788, 42);
             button14.TabIndex = 20;
             button14.Text = "Semana8";
             button14.TextAlign = ContentAlignment.MiddleLeft;
@@ -258,9 +278,10 @@
             // 
             // button15
             // 
-            button15.Location = new Point(5, 728);
+            button15.Location = new Point(6, 910);
+            button15.Margin = new Padding(4, 4, 4, 4);
             button15.Name = "button15";
-            button15.Size = new Size(630, 34);
+            button15.Size = new Size(788, 42);
             button15.TabIndex = 19;
             button15.Text = "Semana7";
             button15.TextAlign = ContentAlignment.MiddleLeft;
@@ -268,9 +289,10 @@
             // 
             // button12
             // 
-            button12.Location = new Point(5, 602);
+            button12.Location = new Point(6, 752);
+            button12.Margin = new Padding(4, 4, 4, 4);
             button12.Name = "button12";
-            button12.Size = new Size(630, 34);
+            button12.Size = new Size(788, 42);
             button12.TabIndex = 18;
             button12.Text = "Semana6";
             button12.TextAlign = ContentAlignment.MiddleLeft;
@@ -278,9 +300,10 @@
             // 
             // button13
             // 
-            button13.Location = new Point(3, 478);
+            button13.Location = new Point(4, 598);
+            button13.Margin = new Padding(4, 4, 4, 4);
             button13.Name = "button13";
-            button13.Size = new Size(630, 34);
+            button13.Size = new Size(788, 42);
             button13.TabIndex = 17;
             button13.Text = "Semana5";
             button13.TextAlign = ContentAlignment.MiddleLeft;
@@ -288,9 +311,10 @@
             // 
             // button7
             // 
-            button7.Location = new Point(5, 360);
+            button7.Location = new Point(6, 450);
+            button7.Margin = new Padding(4, 4, 4, 4);
             button7.Name = "button7";
-            button7.Size = new Size(630, 34);
+            button7.Size = new Size(788, 42);
             button7.TabIndex = 16;
             button7.Text = "Semana4";
             button7.TextAlign = ContentAlignment.MiddleLeft;
@@ -298,9 +322,10 @@
             // 
             // button11
             // 
-            button11.Location = new Point(5, 226);
+            button11.Location = new Point(6, 282);
+            button11.Margin = new Padding(4, 4, 4, 4);
             button11.Name = "button11";
-            button11.Size = new Size(630, 34);
+            button11.Size = new Size(788, 42);
             button11.TabIndex = 15;
             button11.Text = "Semana3";
             button11.TextAlign = ContentAlignment.MiddleLeft;
@@ -308,9 +333,10 @@
             // 
             // button6
             // 
-            button6.Location = new Point(5, 117);
+            button6.Location = new Point(6, 146);
+            button6.Margin = new Padding(4, 4, 4, 4);
             button6.Name = "button6";
-            button6.Size = new Size(630, 34);
+            button6.Size = new Size(788, 42);
             button6.TabIndex = 14;
             button6.Text = "Semana2";
             button6.TextAlign = ContentAlignment.MiddleLeft;
@@ -318,13 +344,14 @@
             // 
             // Modulos_Estudiante
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1119, 613);
+            ClientSize = new Size(1399, 766);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Modulos_Estudiante";
             Text = "Asignaciones_Estudiante";
             panel1.ResumeLayout(false);

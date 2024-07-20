@@ -24,7 +24,7 @@ namespace GestionAsignaciones
             formularioAsignaciones = formAsignaciones;
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-SANTIV\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True");
 
 
 
