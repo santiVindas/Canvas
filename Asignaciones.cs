@@ -26,8 +26,7 @@ namespace GestionAsignaciones
         {
             InitializeComponent();
             listaAsignaciones = asignaciones;
-            CargarAsignacionesDesdeBD();
-            formAsistencia = new Asistencia();
+            ActualizarListBox(); // Actualizar al inicio
 
 
         }
@@ -107,38 +106,25 @@ namespace GestionAsignaciones
 
             // Limpiar los campos después de guardar
             LimpiarCampos();
+            ActualizarListBox();
         }
 
         private void CargarAsignacionesDesdeBD()
         {
-            listaAsignaciones = new List<ClaseAsignaciones>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            // Encuentra la asignación en la lista de pendientes por título
+            var asignacion = asignacionesPendientes.FirstOrDefault(a => a.Titulo == tituloAsignacion);
+            if (asignacion != null)
             {
-                connection.Open();
-                string query = "SELECT Titulo, Descripcion, Fecha, Semana, Tipo, Respuesta, Nota FROM Asignaciones";
+                // Actualiza la descripción con la respuesta del estudiante
+                asignacion.Descripcion += $"\nRespuesta del estudiante: {respuesta}";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        ClaseAsignaciones asignacion = new ClaseAsignaciones
-                        {
-                            Titulo = reader["Titulo"].ToString(),
-                            Descripcion = reader["Descripcion"].ToString(),
-                            Fecha = Convert.ToDateTime(reader["Fecha"]),
-                            Semana = Convert.ToInt32(reader["Semana"]),
-                            Tipo = reader["Tipo"].ToString(),
-                            Respuesta = reader["Respuesta"]?.ToString(),
-                            Nota = reader["Nota"] != DBNull.Value ? Convert.ToDecimal(reader["Nota"]) : 0m
-                        };
-                        listaAsignaciones.Add(asignacion);
-                    }
-                }
+                // Añadir la asignación a la lista de asignaciones visibles
+                listaAsignaciones.Add(asignacion);
+                asignacionesPendientes.Remove(asignacion);
+
+                // Actualizar el ListBox
+                ActualizarListBox();
             }
-
-            ActualizarListBox();
         }
 
         private void ActualizarListBox()
@@ -146,22 +132,7 @@ namespace GestionAsignaciones
             listBox1.Items.Clear();
             foreach (var asignacion in listaAsignaciones)
             {
-                string itemText = asignacion.Titulo;
-                if (!string.IsNullOrEmpty(asignacion.Respuesta))
-                {
-                    itemText += " (Entregado)";
-                }
-                listBox1.Items.Add(itemText);
-            }
-        }
-
-        public void RecibirRespuesta(string tituloAsignacion, string respuesta)
-        {
-            var asignacion = listaAsignaciones.FirstOrDefault(a => a.Titulo == tituloAsignacion);
-            if (asignacion != null)
-            {
-                asignacion.Respuesta = respuesta; // Usa la propiedad Respuesta si existe
-                ActualizarListBox();
+                listBox1.Items.Add(asignacion.Titulo);
             }
         }
 
@@ -232,12 +203,7 @@ namespace GestionAsignaciones
             GestionEstudiante canvaMain = new GestionEstudiante(listaAsignaciones, this, formAsistencia);
             canvaMain.Show();
             this.Hide();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            formAsistencia.Show(); // Mostrar el formulario de Asistencia
-            this.Hide();
+>>>>>>>>> Temporary merge branch 2
         }
     }
 }
