@@ -22,7 +22,7 @@ namespace GestionAsignaciones
             formularioAsignaciones = formAsignaciones;
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-SANTIV\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=EWM0803-PC0803;Initial Catalog=Asignaciones;Integrated Security=True");
 
 
 
@@ -35,7 +35,7 @@ namespace GestionAsignaciones
 
             try
             {
-                String querry = "SELECT * FROM logIn_usuario where username= '" + usuario_text.Text + "' AND password= '" + contrasena_text.Text + "'";
+                String querry = "SELECT * FROM Estudiantes where Correo= '" + usuario_text.Text + "' AND password= '" + contrasena_text.Text + "'";
                 SqlDataAdapter sda = new SqlDataAdapter(querry, conn);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);

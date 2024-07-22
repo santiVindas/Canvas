@@ -13,7 +13,7 @@ namespace GestionAsignaciones
 {
     public partial class GestionEstudiante : Form
     {
-        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=EWM0803-PC0803;Initial Catalog=Asignaciones;Integrated Security=True;";
         private bool isModifyMode = false;
         private bool isDeleteMode = false;
         private string CorreoEstudiantesSeleccionado = "";
@@ -96,11 +96,10 @@ namespace GestionAsignaciones
             string primer_Apellido = primer_Apellido_textBox.Text;
             string segundo_Apellido = segundo_Apellido_textBox.Text;
             string Correo = correo_textBox.Text;
-            int NumGrupo = int.Parse(grupo_textBox.Text);
             int Cedula = int.Parse(cedula_textBox.Text);
 
 
-            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre) || NumGrupo == 0 || Cedula == 0 || string.IsNullOrEmpty(primer_Apellido) || string.IsNullOrEmpty(segundo_Apellido))
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre) || Cedula == 0 || string.IsNullOrEmpty(primer_Apellido) || string.IsNullOrEmpty(segundo_Apellido))
             {
                 MessageBox.Show("Todos los campos son obligatorios. Por favor, complete todos los campos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -112,23 +111,21 @@ namespace GestionAsignaciones
                 return;
             }
 
-            GuardarEstudiantesEnBaseDeDatos(Correo, Nombre, NumGrupo, Cedula, primer_Apellido, segundo_Apellido);
+            GuardarEstudiantesEnBaseDeDatos(Correo, Nombre, Cedula, primer_Apellido, segundo_Apellido);
 
             LimpiarControles();
             panel1.Visible = false;
             isModifyMode = false;
 
-            /*Abrir Canva_Main y cargar los datos*/
+            /*cargar los datos*/
             Canva_Main canvaMain = new Canva_Main(listaAsignaciones, formularioAsignaciones);
-            canvaMain.Show();
             canvaMain.CargarDatos();
         }
 
         private void cancelar_button2_Click(object sender, EventArgs e)
         {
-            LimpiarControles();
-            panel1.Visible = false;
-            isModifyMode = false;
+            Asignaciones asig = new Asignaciones(listaAsignaciones);
+            asig.Show();
         }
 
         private void eliminar_button3_Click(object sender, EventArgs e)
@@ -208,13 +205,12 @@ namespace GestionAsignaciones
             primer_Apellido_textBox.Text = "";
             segundo_Apellido_textBox.Text = "";
             correo_textBox.Text = "";
-            grupo_textBox.Text = "";
             cedula_textBox.Text = "";
 
         }
-        private void GuardarEstudiantesEnBaseDeDatos(string Correo, string Nombre, int NumGrupo, int Cedula, string primer_Apellido, string segundo_Apellido)
+        private void GuardarEstudiantesEnBaseDeDatos(string Correo, string Nombre,  int Cedula, string primer_Apellido, string segundo_Apellido)
         {
-            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre) || NumGrupo == 0 || Cedula == 0 || string.IsNullOrEmpty(primer_Apellido) || string.IsNullOrEmpty(segundo_Apellido))
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre) ||  Cedula == 0 || string.IsNullOrEmpty(primer_Apellido) || string.IsNullOrEmpty(segundo_Apellido))
             {
                 MessageBox.Show("Todos los campos son obligatorios. Por favor, complete todos los campos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -227,15 +223,14 @@ namespace GestionAsignaciones
             }
 
             string query = isModifyMode ?
-                "UPDATE Estudiantes SET Correo = @Correo, Nombre = @Nombre, NumGrupo = @NumGrupo, primer_Apellido = @primerApellido, segundo_Apellido = @segundoApellido, Cedula = @cedula WHERE Correo = @Correo" :
-                "INSERT INTO Estudiantes (Correo, Nombre, NumGrupo, primer_Apellido, segundo_Apellido, Cedula) VALUES (@Correo, @Nombre, @NumGrupo, @primerApellido, @segundoApellido, @cedula)";
+                "UPDATE Estudiantes SET Correo = @Correo, Nombre = @Nombre, primer_Apellido = @primerApellido, segundo_Apellido = @segundoApellido, Cedula = @cedula WHERE Correo = @Correo" :
+                "INSERT INTO Estudiantes (Correo, Nombre, primer_Apellido, segundo_Apellido, Cedula) VALUES (@Correo, @Nombre,  @primerApellido, @segundoApellido, @cedula)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Correo", Correo);
                 command.Parameters.AddWithValue("@Nombre", Nombre);
-                command.Parameters.AddWithValue("@NumGrupo", NumGrupo);
                 command.Parameters.AddWithValue("@primerApellido", primer_Apellido);
                 command.Parameters.AddWithValue("@segundoApellido", segundo_Apellido);
                 command.Parameters.AddWithValue("@cedula", Cedula);
@@ -264,7 +259,7 @@ namespace GestionAsignaciones
 
         private void CargarEstudiantes()
         {
-            string query = "SELECT Correo AS Correo,Cedula AS Cedula, Nombre AS Nombre, NumGrupo AS NumGrupo, primer_Apellido AS primerApellido, segundo_Apellido AS segundoApellido FROM Estudiantes";
+            string query = "SELECT Correo AS Correo,Cedula AS Cedula, Nombre AS Nombre, primer_Apellido AS primerApellido, segundo_Apellido AS segundoApellido FROM Estudiantes";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -293,7 +288,7 @@ namespace GestionAsignaciones
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 CorreoEstudiantesSeleccionado = row.Cells["Correo"].Value.ToString();
 
-                string query = "SELECT Correo, Nombre, NumGrupo, primer_Apellido, segundo_Apellido, Cedula FROM Estudiantes WHERE Correo = @Correo";
+                string query = "SELECT Correo, Nombre, primer_Apellido, segundo_Apellido, Cedula FROM Estudiantes WHERE Correo = @Correo";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -312,7 +307,6 @@ namespace GestionAsignaciones
                             primer_Apellido_textBox.Text = reader["primer_Apellido"].ToString();
                             segundo_Apellido_textBox.Text = reader["segundo_Apellido"].ToString();
                             correo_textBox.Text = reader["Correo"].ToString();
-                            grupo_textBox.Text = reader["NumGrupo"].ToString();
                             cedula_textBox.Text = reader["Cedula"].ToString();
 
                             panel1.Visible = true;
@@ -415,5 +409,6 @@ namespace GestionAsignaciones
             }
         }
 
+        
     }
 }

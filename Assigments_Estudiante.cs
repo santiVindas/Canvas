@@ -15,7 +15,7 @@ namespace GestionAsignaciones
 
     public partial class Assigments_Estudiante : Form
     {
-        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=EWM0803-PC0803;Initial Catalog=Asignaciones;Integrated Security=True;";
 
         private List<ClaseAsignaciones> listaAsignaciones;
         private Asignaciones formularioAsignaciones;
@@ -118,6 +118,13 @@ namespace GestionAsignaciones
         private void Assigments_Estudiante_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            VisualizarPeople ver = new VisualizarPeople();
+            ver.Show();
+            this.Hide();
         }
     }
 }

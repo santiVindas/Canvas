@@ -45,20 +45,18 @@
             // 
             // button3
             // 
-            button3.Location = new Point(11, 176);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Location = new Point(9, 141);
             button3.Name = "button3";
-            button3.Size = new Size(89, 35);
+            button3.Size = new Size(71, 28);
             button3.TabIndex = 2;
             button3.Text = "Cursos";
             button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(11, 26);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Location = new Point(9, 21);
             button1.Name = "button1";
-            button1.Size = new Size(100, 96);
+            button1.Size = new Size(80, 77);
             button1.TabIndex = 1;
             button1.Text = "Perfil";
             button1.UseVisualStyleBackColor = true;
@@ -71,68 +69,62 @@
             panel1.Controls.Add(button8);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button2);
-            panel1.Location = new Point(149, 15);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Location = new Point(119, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 739);
+            panel1.Size = new Size(268, 591);
             panel1.TabIndex = 14;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(124, 66);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(99, 53);
             label1.Name = "label1";
-            label1.Size = new Size(63, 25);
+            label1.Size = new Size(50, 20);
             label1.TabIndex = 9;
             label1.Text = "2C024";
             // 
             // button10
             // 
-            button10.Location = new Point(26, 548);
-            button10.Margin = new Padding(4, 4, 4, 4);
+            button10.Location = new Point(21, 438);
             button10.Name = "button10";
-            button10.Size = new Size(259, 59);
+            button10.Size = new Size(207, 47);
             button10.TabIndex = 8;
             button10.Text = "Integrantes";
             button10.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            button9.Location = new Point(26, 451);
-            button9.Margin = new Padding(4, 4, 4, 4);
+            button9.Location = new Point(21, 361);
             button9.Name = "button9";
-            button9.Size = new Size(259, 59);
+            button9.Size = new Size(207, 47);
             button9.TabIndex = 7;
             button9.Text = "Ver Grupos";
             button9.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            button8.Location = new Point(26, 362);
-            button8.Margin = new Padding(4, 4, 4, 4);
+            button8.Location = new Point(21, 290);
             button8.Name = "button8";
-            button8.Size = new Size(259, 59);
+            button8.Size = new Size(207, 47);
             button8.TabIndex = 6;
-            button8.Text = "Crear Grupos";
+            button8.Text = "People";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(26, 268);
-            button4.Margin = new Padding(4, 4, 4, 4);
+            button4.Location = new Point(21, 214);
             button4.Name = "button4";
-            button4.Size = new Size(259, 59);
+            button4.Size = new Size(207, 47);
             button4.TabIndex = 2;
             button4.Text = "Assignments";
             button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(26, 174);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Location = new Point(21, 139);
             button2.Name = "button2";
-            button2.Size = new Size(259, 59);
+            button2.Size = new Size(207, 47);
             button2.TabIndex = 1;
             button2.Text = "Modulos";
             button2.UseVisualStyleBackColor = true;
@@ -143,32 +135,28 @@
             panelMenu.BackColor = Color.FromArgb(87, 35, 100);
             panelMenu.Controls.Add(button3);
             panelMenu.Controls.Add(button1);
-            panelMenu.Location = new Point(15, 15);
-            panelMenu.Margin = new Padding(4, 4, 4, 4);
+            panelMenu.Location = new Point(12, 12);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(126, 739);
+            panelMenu.Size = new Size(101, 591);
             panelMenu.TabIndex = 13;
             // 
             // ListaTarea
             // 
             ListaTarea.FormattingEnabled = true;
-            ListaTarea.ItemHeight = 25;
-            ListaTarea.Location = new Point(501, 19);
-            ListaTarea.Margin = new Padding(4, 4, 4, 4);
+            ListaTarea.Location = new Point(401, 15);
             ListaTarea.Name = "ListaTarea";
-            ListaTarea.Size = new Size(864, 554);
+            ListaTarea.Size = new Size(692, 444);
             ListaTarea.TabIndex = 15;
             ListaTarea.SelectedIndexChanged += ListaTarea_SelectedIndexChanged;
             // 
             // Assigments_Estudiante
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1399, 769);
+            ClientSize = new Size(1119, 615);
             Controls.Add(ListaTarea);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "Assigments_Estudiante";
             Text = "Assigments_Estudiante";
             Load += Assigments_Estudiante_Load;

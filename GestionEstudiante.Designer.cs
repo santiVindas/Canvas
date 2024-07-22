@@ -41,8 +41,6 @@
             primer_Apellido_textBox = new TextBox();
             segundo_Apellido_textBox = new TextBox();
             correo_textBox = new TextBox();
-            grupo_textBox = new TextBox();
-            label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -121,7 +119,7 @@
             aceptar_button1.Name = "aceptar_button1";
             aceptar_button1.Size = new Size(110, 54);
             aceptar_button1.TabIndex = 3;
-            aceptar_button1.Text = "Aceptar";
+            aceptar_button1.Text = "Aplicar";
             aceptar_button1.UseVisualStyleBackColor = true;
             aceptar_button1.Click += aceptar_button1_Click;
             // 
@@ -141,8 +139,6 @@
             panel1.Controls.Add(primer_Apellido_textBox);
             panel1.Controls.Add(segundo_Apellido_textBox);
             panel1.Controls.Add(correo_textBox);
-            panel1.Controls.Add(grupo_textBox);
-            panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
@@ -158,7 +154,7 @@
             // 
             // cedula_textBox
             // 
-            cedula_textBox.Location = new Point(172, 307);
+            cedula_textBox.Location = new Point(170, 249);
             cedula_textBox.Name = "cedula_textBox";
             cedula_textBox.Size = new Size(220, 27);
             cedula_textBox.TabIndex = 16;
@@ -184,26 +180,10 @@
             correo_textBox.Size = new Size(220, 27);
             correo_textBox.TabIndex = 13;
             // 
-            // grupo_textBox
-            // 
-            grupo_textBox.Location = new Point(172, 252);
-            grupo_textBox.Name = "grupo_textBox";
-            grupo_textBox.Size = new Size(220, 27);
-            grupo_textBox.TabIndex = 12;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(21, 252);
-            label7.Name = "label7";
-            label7.Size = new Size(53, 20);
-            label7.TabIndex = 11;
-            label7.Text = "Grupo:";
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(21, 307);
+            label6.Location = new Point(21, 249);
             label6.Name = "label6";
             label6.Size = new Size(55, 20);
             label6.TabIndex = 10;
@@ -302,8 +282,6 @@
         private TextBox primer_Apellido_textBox;
         private TextBox segundo_Apellido_textBox;
         private TextBox correo_textBox;
-        private TextBox grupo_textBox;
-        private Label label7;
         private Label label6;
         private Panel panel2;
     }
