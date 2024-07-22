@@ -12,19 +12,22 @@ namespace GestionAsignaciones
 {
     public partial class Canva_Estudiante : Form
     {
-        private string connectionString = "Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
         private List<ClaseAsignaciones> listaAsignaciones;
         private Asignaciones formularioAsignaciones;
         private List<Button> courseButtons;
+        private string estudianteNombre;
 
-        public Canva_Estudiante(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones)
+
+        public Canva_Estudiante(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones, string nombreEstudiante)
         {
             InitializeComponent();
             listaAsignaciones = asignaciones;
             formularioAsignaciones = formAsignaciones;
+            estudianteNombre = nombreEstudiante; // Guardar el nombre del estudiante
             panel1.Visible = false;
 
-          
+
             courseButtons = new List<Button> { button4, button5, button6, button7, button8, button9, button10, button11 };
         }
 
@@ -33,9 +36,34 @@ namespace GestionAsignaciones
             Form_Principal fm = new Form_Principal();
             fm.Show();
             this.Hide();
+            VerificarAusencias();
 
-          
+
             LoadCourseNames();
+        }
+
+        private void VerificarAusencias()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Asistencia WHERE Estado = 'Ausente' GROUP BY EstudianteId HAVING COUNT(*) >= 3";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    int estudiantesReprobados = (int)command.ExecuteScalar();
+
+                    if (estudiantesReprobados > 0)
+                    {
+                        MessageBox.Show("Ha reprobado el curso por asistencia.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar ausencias: " + ex.Message);
+                }
+            }
         }
 
         private void LoadCourseNames()

@@ -22,7 +22,7 @@ namespace GestionAsignaciones
             formularioAsignaciones = formAsignaciones;
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-SANTIV\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True");
 
 
 
@@ -35,20 +35,21 @@ namespace GestionAsignaciones
 
             try
             {
-                String querry = "SELECT * FROM logIn_usuario where username= '" + usuario_text.Text + "' AND password= '" + contrasena_text.Text + "'";
-                SqlDataAdapter sda = new SqlDataAdapter(querry, conn);
+
+                String querry = "SELECT * FROM logIn_usuario WHERE username= @username AND password= @password";
+                SqlCommand cmd = new SqlCommand(querry, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
 
                 if (dt.Rows.Count > 0)
                 {
-                    username = usuario_text.Text;
-                    password = contrasena_text.Text;
+                    string nombreEstudiante = dt.Rows[0]["Nombre"].ToString(); // Obtener el nombre del estudiante
 
-                    //Metodo para agregar la otra pantalla
-
-                    Canva_Estudiante canvaEstudiante = new Canva_Estudiante(listaAsignaciones, formularioAsignaciones);
+                    Canva_Estudiante canvaEstudiante = new Canva_Estudiante(listaAsignaciones, formularioAsignaciones, nombreEstudiante);
                     canvaEstudiante.Show();
                     this.Hide();
 
@@ -59,7 +60,6 @@ namespace GestionAsignaciones
                     MessageBox.Show("ERROR DE CREDENCIALES", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usuario_text.Clear();
                     contrasena_text.Clear();
-
                     usuario_text.Focus();
 
                 }
