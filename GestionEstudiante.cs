@@ -19,8 +19,9 @@ namespace GestionAsignaciones
         private string CorreoEstudiantesSeleccionado = "";
         private List<ClaseAsignaciones> listaAsignaciones;
         private Asignaciones formularioAsignaciones;
+        private Asistencia formularioAsistencia;
 
-        public GestionEstudiante(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones)
+        public GestionEstudiante(List<ClaseAsignaciones> asignaciones, Asignaciones formAsignaciones, Asistencia formAsistencia)
         {
             InitializeComponent();
             panel1.Visible = false;
@@ -29,6 +30,7 @@ namespace GestionAsignaciones
             dataGridView1.CellClick += DataGridView1_CellClick;
             listaAsignaciones = asignaciones;
             formularioAsignaciones = formAsignaciones;
+            formularioAsistencia = formAsistencia;
         }
         private void ADD_Click(object sender, EventArgs e)
         {
@@ -117,7 +119,10 @@ namespace GestionAsignaciones
             panel1.Visible = false;
             isModifyMode = false;
 
-            /*cargar los datos*/
+            // Actualiza el formulario Asistencia
+            formularioAsistencia.CargarEstudiantes();
+
+            /*Abrir Canva_Main y cargar los datos*/
             Canva_Main canvaMain = new Canva_Main(listaAsignaciones, formularioAsignaciones);
             canvaMain.CargarDatos();
         }

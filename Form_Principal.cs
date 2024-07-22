@@ -20,6 +20,7 @@ namespace GestionAsignaciones
             listaAsignaciones = new List<ClaseAsignaciones>();
             formularioAsignaciones = new Asignaciones(listaAsignaciones);
 
+
         }
 
         private void label1_Click(object sender, EventArgs e)

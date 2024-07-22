@@ -38,7 +38,7 @@ namespace GestionAsignaciones
                 // Crear un panel para cada asignación
                 Panel panelAsignacion = new Panel();
                 panelAsignacion.BorderStyle = BorderStyle.FixedSingle;
-                panelAsignacion.Size = new System.Drawing.Size(500, 100);
+                panelAsignacion.Size = new System.Drawing.Size(500, 120);
                 panelAsignacion.Location = new System.Drawing.Point(10, yOffset);
 
                 // Crear etiquetas para mostrar los detalles de la asignación
@@ -62,12 +62,18 @@ namespace GestionAsignaciones
                 lblTipo.AutoSize = true;
                 lblTipo.Location = new System.Drawing.Point(10, 70);
 
+                Label lblNota = new Label();
+                lblNota.Text = $"Nota: {asignacion.Nota}";
+                lblNota.AutoSize = true;
+                lblNota.Location = new System.Drawing.Point(10, 90);
+
 
                 // Agregar las etiquetas al panel de asignación
                 panelAsignacion.Controls.Add(lblTitulo);
                 panelAsignacion.Controls.Add(lblDescripcion);
                 panelAsignacion.Controls.Add(lblFecha);
                 panelAsignacion.Controls.Add(lblTipo);
+                panelAsignacion.Controls.Add(lblNota);
 
 
 

@@ -18,14 +18,18 @@ namespace GestionAsignaciones
         // Lista para almacenar las asignaciones
         private List<ClaseAsignaciones> listaAsignaciones;
         private List<ClaseAsignaciones> asignacionesPendientes = new List<ClaseAsignaciones>();
-        private string connectionString = "Server=EWM0803-PC0803;Database=Asignaciones;Trusted_Connection=True;";
+
+        private string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
+        private Asistencia formAsistencia;
 
 
         public Asignaciones(List<ClaseAsignaciones> asignaciones)
         {
             InitializeComponent();
             listaAsignaciones = asignaciones;
-            ActualizarListBox(); // Actualizar al inicio
+            CargarAsignacionesDesdeBD();
+
+            formAsistencia = new Asistencia();
 
 
         }
@@ -47,13 +51,13 @@ namespace GestionAsignaciones
 
 
             // Cadena de conexión directa
-            string connectionString = "Server=EWM0803-PC0803;Database=Asignaciones;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "INSERT INTO Asignaciones (Titulo, Descripcion, Fecha, Semana, Tipo) VALUES (@Titulo, @Descripcion, @Fecha, @Semana, @Tipo)";
+                string query = "INSERT INTO Asignaciones (Titulo, Descripcion, Fecha, Semana, Tipo, Nota) VALUES (@Titulo, @Descripcion, @Fecha, @Semana, @Tipo, @Nota)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -62,6 +66,8 @@ namespace GestionAsignaciones
                     command.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                     command.Parameters.AddWithValue("@Semana", (int)numericUpDown1.Value);
                     command.Parameters.AddWithValue("@Tipo", textBoxTipo.SelectedItem.ToString());
+                    command.Parameters.AddWithValue("@Nota", numericUpDown2.Value);
+
 
                     try
                     {
@@ -82,7 +88,8 @@ namespace GestionAsignaciones
                 Descripcion = textBoxDesc.Text,
                 Fecha = dateTimePicker1.Value,
                 Semana = (int)numericUpDown1.Value,
-                Tipo = textBoxTipo.SelectedItem?.ToString()
+                Tipo = textBoxTipo.SelectedItem?.ToString(),
+                Nota = numericUpDown2.Value
             };
 
             listaAsignaciones.Add(nuevaAsignacion);
@@ -102,110 +109,144 @@ namespace GestionAsignaciones
 
             // Limpiar los campos después de guardar
             LimpiarCampos();
-            ActualizarListBox();
+
+
         }
 
-        public void RecibirRespuesta(string tituloAsignacion, string respuesta)
+        private void CargarAsignacionesDesdeBD()
         {
-            // Encuentra la asignación en la lista de pendientes por título
-            var asignacion = asignacionesPendientes.FirstOrDefault(a => a.Titulo == tituloAsignacion);
-            if (asignacion != null)
+
+            listaAsignaciones = new List<ClaseAsignaciones>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Actualiza la descripción con la respuesta del estudiante
-                asignacion.Descripcion += $"\nRespuesta del estudiante: {respuesta}";
+                connection.Open();
+                string query = "SELECT Titulo, Descripcion, Fecha, Semana, Tipo, Respuesta, Nota FROM Asignaciones";
 
-                // Añadir la asignación a la lista de asignaciones visibles
-                listaAsignaciones.Add(asignacion);
-                asignacionesPendientes.Remove(asignacion);
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ClaseAsignaciones asignacion = new ClaseAsignaciones
+                        {
+                            Titulo = reader["Titulo"].ToString(),
+                            Descripcion = reader["Descripcion"].ToString(),
+                            Fecha = Convert.ToDateTime(reader["Fecha"]),
+                            Semana = Convert.ToInt32(reader["Semana"]),
+                            Tipo = reader["Tipo"].ToString(),
+                            Respuesta = reader["Respuesta"]?.ToString(),
+                            Nota = reader["Nota"] != DBNull.Value ? Convert.ToDecimal(reader["Nota"]) : 0m
+                        };
+                        listaAsignaciones.Add(asignacion);
+                    }
+                }
 
-                // Actualizar el ListBox
                 ActualizarListBox();
             }
         }
 
-        private void ActualizarListBox()
-        {
-            listBox1.Items.Clear();
-            foreach (var asignacion in listaAsignaciones)
+            private void ActualizarListBox()
             {
-                listBox1.Items.Add(asignacion.Titulo);
+                listBox1.Items.Clear();
+                foreach (var asignacion in listaAsignaciones)
+                {
+                    string itemText = asignacion.Titulo;
+                    if (!string.IsNullOrEmpty(asignacion.Respuesta))
+                    {
+                        itemText += " (Entregado)";
+                    }
+                    listBox1.Items.Add(itemText);
+
+                }
+            }
+
+            public void RecibirRespuesta(string tituloAsignacion, string respuesta)
+            {
+                var asignacion = listaAsignaciones.FirstOrDefault(a => a.Titulo == tituloAsignacion);
+                if (asignacion != null)
+                {
+                    asignacion.Respuesta = respuesta; // Usa la propiedad Respuesta si existe
+                    ActualizarListBox();
+
+                }
+            }
+
+            private void LimpiarCampos()
+            {
+                textBoxTitulo.Text = "";
+                textBoxDesc.Text = "";
+                dateTimePicker1.Value = DateTime.Today;
+                numericUpDown1.Value = 1;
+                textBoxTipo.SelectedIndex = -1;
+            }
+
+            private void Asignaciones_Load(object sender, EventArgs e)
+            {
+                // Ocultar panel3 al inicio
+                panel3.Visible = false;
+            }
+
+            private void button5_Click(object sender, EventArgs e)
+            {
+                // Mostrar panel3 cuando se haga clic en el botón "Agregar Asignación"
+                panel3.Visible = true;
+            }
+
+            // Manejador del evento KeyPress para numericUpDown1
+            private void numericUpDown1_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = true;
+            }
+
+
+            private void button2_Click(object sender, EventArgs e)
+            {
+                // Ocultar Form1 en lugar de cerrarlo
+                this.Hide();
+
+                // Mostrar ModulosForm y pasar una referencia a Form1 y la lista de asignaciones
+                ModulosCurso modulosForm = new ModulosCurso(this, listaAsignaciones);
+                modulosForm.ShowDialog();
+
+                // Mostrar nuevamente Form1 cuando se cierre ModulosForm
+                this.Show();
+
+            }
+
+            private void button3_Click(object sender, EventArgs e)
+            {
+                Canva_Main cm = new Canva_Main(listaAsignaciones, this);
+                cm.Show();
+                this.Hide();
+            }
+
+            private void textBoxTipo_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = true;
+            }
+
+            private void buttonAbrirCanvaEstudiante_Click(object sender, EventArgs e)
+            {
+                string nombreEstudiante = "NombreDelEstudiante";
+                Canva_Estudiante canvaEstudiante = new Canva_Estudiante(listaAsignaciones, this, nombreEstudiante);
+                canvaEstudiante.Show();
+                this.Hide();
+            }
+
+            private void button8_Click(object sender, EventArgs e)
+            {
+                GestionEstudiante canvaMain = new GestionEstudiante(listaAsignaciones, this, formAsistencia);
+                canvaMain.Show();
+                this.Hide();
+
+            }
+
+            private void button9_Click(object sender, EventArgs e)
+            {
+                formAsistencia.Show(); // Mostrar el formulario de Asistencia
+                this.Hide();
+
             }
         }
-
-        private void LimpiarCampos()
-        {
-            textBoxTitulo.Text = "";
-            textBoxDesc.Text = "";
-            dateTimePicker1.Value = DateTime.Today;
-            numericUpDown1.Value = 1;
-            textBoxTipo.SelectedIndex = -1;
-        }
-
-        private void Asignaciones_Load(object sender, EventArgs e)
-        {
-            // Ocultar panel3 al inicio
-            panel3.Visible = false;
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // Mostrar panel3 cuando se haga clic en el botón "Agregar Asignación"
-            panel3.Visible = true;
-        }
-
-        // Manejador del evento KeyPress para numericUpDown1
-        private void numericUpDown1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Ocultar Form1 en lugar de cerrarlo
-            this.Hide();
-
-            // Mostrar ModulosForm y pasar una referencia a Form1 y la lista de asignaciones
-            ModulosCurso modulosForm = new ModulosCurso(this, listaAsignaciones);
-            modulosForm.ShowDialog();
-
-            // Mostrar nuevamente Form1 cuando se cierre ModulosForm
-            this.Show();
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Canva_Main cm = new Canva_Main(listaAsignaciones, this);
-            cm.Show();
-            this.Hide();
-        }
-
-        private void textBoxTipo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void buttonAbrirCanvaEstudiante_Click(object sender, EventArgs e)
-        {
-            Canva_Estudiante canvaEstudiante = new Canva_Estudiante(listaAsignaciones, this);
-            canvaEstudiante.Show();
-            this.Hide();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            GestionEstudiante canvaMain = new GestionEstudiante(listaAsignaciones, this);
-            canvaMain.Show();
-            this.Hide();
-        }
-
-        private void people_button_Click(object sender, EventArgs e)
-        {
-
-
-
-
-        }
     }
-}

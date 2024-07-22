@@ -53,11 +53,14 @@
             label2 = new Label();
             listBox1 = new ListBox();
             label4 = new Label();
+            label8 = new Label();
+            numericUpDown2 = new NumericUpDown();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
@@ -121,7 +124,9 @@
             // button6
             // 
             button6.BackColor = Color.White;
-            button6.Location = new Point(220, 239);
+            button6.Location = new Point(228, 259);
+            button6.Margin = new Padding(4, 4, 4, 4);
+            button6.Margin = new Padding(4, 4, 4, 4);
             button6.Name = "button6";
             button6.Size = new Size(111, 31);
             button6.TabIndex = 4;
@@ -137,7 +142,17 @@
             button8.TabIndex = 6;
             button8.Text = "People";
             button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
+            // button9
+            // 
+            button9.Location = new Point(26, 451);
+            button9.Margin = new Padding(4, 4, 4, 4);
+            button9.Name = "button9";
+            button9.Size = new Size(259, 59);
+            button9.TabIndex = 7;
+            button9.Text = "Ver Grupos";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            button9.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
@@ -173,13 +188,15 @@
             // 
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(button5);
-            panel2.Location = new Point(374, 4);
+            panel2.Size = new Size(594, 436);
             panel2.Name = "panel2";
-            panel2.Size = new Size(594, 409);
+            panel2.Size = new Size(742, 511);
             panel2.TabIndex = 11;
             // 
             // panel3
             // 
+            panel3.Controls.Add(numericUpDown2);
+            panel3.Controls.Add(label8);
             panel3.Controls.Add(textBoxTitulo);
             panel3.Controls.Add(textBoxTipo);
             panel3.Controls.Add(numericUpDown1);
@@ -191,9 +208,9 @@
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(button6);
-            panel3.Location = new Point(10, 131);
+            panel3.Size = new Size(581, 305);
             panel3.Name = "panel3";
-            panel3.Size = new Size(581, 278);
+            panel3.Size = new Size(726, 348);
             panel3.TabIndex = 20;
             // 
             // textBoxTitulo
@@ -304,6 +321,25 @@
             label4.Text = "TAREA ESTUDIANTES";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(14, 240);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 20);
+            label8.TabIndex = 23;
+            label8.Text = "Nota";
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Location = new Point(83, 233);
+            numericUpDown2.Maximum = new decimal(new int[] { 100, 0, 0, 0 });
+            numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(45, 27);
+            numericUpDown2.TabIndex = 24;
+            numericUpDown2.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // Asignaciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -324,6 +360,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -356,5 +393,7 @@
         private TextBox txtBoxTipo;
         private ListBox listBox1;
         private Label label4;
+        private Label label8;
+        private NumericUpDown numericUpDown2;
     }
 }

@@ -42,46 +42,51 @@ namespace GestionAsignaciones
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            // Obtener el texto del TextBox
             string texto = textBox1.Text;
 
-            // Verificar si el texto está vacío
             if (string.IsNullOrEmpty(texto))
             {
                 MessageBox.Show("Está vacío y no hay nada para enviar.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Guardar la respuesta en la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                string query = "UPDATE Asignaciones SET Respuesta = @Respuesta WHERE Titulo = @Titulo";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@Respuesta", texto);
-                    command.Parameters.AddWithValue("@Titulo", asignacion.Titulo);
+                    connection.Open();
+                    string query = "UPDATE Asignaciones SET Respuesta = @Respuesta WHERE Titulo = @Titulo";
 
-                    try
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Respuesta enviada exitosamente.");
+                        command.Parameters.AddWithValue("@Respuesta", texto);
+                        command.Parameters.AddWithValue("@Titulo", asignacion.Titulo);
+
+                        try
+                        {
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Enviado.");
+                                formularioAsignaciones.RecibirRespuesta(asignacion.Titulo, texto);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró la asignación para actualizar.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al enviar la respuesta: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al enviar la respuesta: " + ex.Message);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al conectar con la base de datos: " + ex.Message);
                 }
             }
 
-            // Actualizar la descripción de la asignación localmente (opcional)
-            asignacion.Descripcion += $"\nRespuesta del estudiante: {texto}";
-
-            // Notificar al formulario de asignaciones
-            formularioAsignaciones.RecibirRespuesta(asignacion.Titulo, texto);
-
-            // Cerrar el formulario de detalles
             this.Close();
         }
 
@@ -93,6 +98,7 @@ namespace GestionAsignaciones
             label3.Text = $"Fecha: {asignacion.Fecha.ToShortDateString()}";
             label4.Text = $"Semana: {asignacion.Semana}";
             label5.Text = $"Tipo: {asignacion.Tipo}";
+            label7.Text = $"Nota: {asignacion.Nota}";
         }
 
         private void DetallesAsignacion_Load(object sender, EventArgs e)
