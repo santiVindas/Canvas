@@ -15,7 +15,7 @@ namespace GestionAsignaciones
 
     public partial class Assigments_Estudiante : Form
     {
-        private string connectionString = "Data Source=LAPTOP-SANTIV\\SQLDEVELOPER;Initial Catalog=Asignaciones;Integrated Security=True;";
+        private string connectionString = "Data Source=DESKTOP-OI24L37;Initial Catalog=Asignaciones;Integrated Security=True;";
 
         private List<ClaseAsignaciones> listaAsignaciones;
         private Asignaciones formularioAsignaciones;
@@ -113,6 +113,11 @@ namespace GestionAsignaciones
             {
                 MessageBox.Show("No se puede abrir ModulosCurso. El formulario de asignaciones no está disponible.");
             }
+        }
+
+        private void Assigments_Estudiante_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

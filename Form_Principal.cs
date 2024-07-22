@@ -40,5 +40,10 @@ namespace GestionAsignaciones
             profesor.Show();
             this.Hide();
         }
+
+        private void Form_Principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

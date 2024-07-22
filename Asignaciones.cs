@@ -18,7 +18,7 @@ namespace GestionAsignaciones
         // Lista para almacenar las asignaciones
         private List<ClaseAsignaciones> listaAsignaciones;
         private List<ClaseAsignaciones> asignacionesPendientes = new List<ClaseAsignaciones>();
-        private string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-OI24L37;Database=Asignaciones;Trusted_Connection=True;";
 
 
         public Asignaciones(List<ClaseAsignaciones> asignaciones)
@@ -47,7 +47,7 @@ namespace GestionAsignaciones
 
 
             // Cadena de conexión directa
-            string connectionString = "Server=LAPTOP-SANTIV\\SQLDEVELOPER;Database=Asignaciones;Trusted_Connection=True;";
+            string connectionString = "Server=DESKTOP-OI24L37;Database=Asignaciones;Trusted_Connection=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
